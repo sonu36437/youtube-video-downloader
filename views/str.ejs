@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .vd {
+      color: rgb(238, 238, 238);
+      /* height: 32rem; */
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+      width: 100%;
+      background: url(<%=thumbnailUrl%>);
+
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 100% 100%;
+      background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+      background-image: radial-gradient(49% 81% at 45% 47%, #302c1145 0%, #073AFF00 100%), radial-gradient(113% 91% at 31% -21%, #FF5A00FF 82%, #FF000000 99%), radial-gradient(142% 91% at 83% 7%, #FFDB00FF 1%, #FF000000 99%), radial-gradient(142% 91% at -6% 74%, #FF0049FF 1%, #FF000000 99%), radial-gradient(142% 91% at 111% 84%, #FF7000FF 0%, #FF0000FF 100%);
+      display: flex;
+      /* align-items:center; */
+
+
+    }
+
+    img {
+      height: 16rem;
+      width: 27rem;
+      margin-left: 1rem;
+      border-radius: 0.3rem;
+      /* border: 0.1rem solid black; */
+      box-shadow: 1px 1px 5px black;
+
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 2rem;
+      font-weight: bolder;
+      font-family: 'Righteous', cursive;
+      text-shadow: 1px 1px 5px black;
+    }
+
+    li {
+      list-style: none;
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-left: 2rem;
+      margin-right: 3rem;
+      box-sizing: border-box;
+      font-family: 'Righteous', cursive;
+
+
+
+    }
+
+    button {
+      border: none;
+      outline: none;
+      background-color: #0c0c0c;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      margin: 20px;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    img:hover {
+      height: 16.2rem;
+      width: 27.2rem;
+
+
+      border-radius: 0.3rem;
+      /* border: 0.1rem solid black; */
+      box-shadow: 5px 5px 12px black;
+
+    }
+
+    .icon {
+      font-size: 1.2rem;
+      color: rgb(138, 252, 62);
+    }
+
+    .qualityLabel {
+      font-size: 3rem;
+    }
+
+    #audioUrl {
+      display: none;
+    }
+    .containerAll{
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 100% 100%;
+      background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+      background-image: radial-gradient(49% 81% at 45% 47%, #302c1145 0%, #073AFF00 100%), radial-gradient(113% 91% at 31% -21%, #FF5A00FF 82%, #FF000000 99%), radial-gradient(142% 91% at 83% 7%, #FFDB00FF 1%, #FF000000 99%), radial-gradient(142% 91% at -6% 74%, #FF0049FF 1%, #FF000000 99%), radial-gradient(142% 91% at 111% 84%, #FF7000FF 0%, #FF0000FF 100%);
+    }
+  </style>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</head>
+
+<body>
+
+  <div class="vd">
+
+
+    <img src=<%=thumbnailUrl%> id="img">
+    <div class="title">
+      <h1><%=title%></h1>
+    </div>
+    <span id="audioUrl"><%=audioUrl%></span>
+
+
+
+
+
+  </div>
+
+
+  <div class="videoqual">
+    <ul>
+
+
+      <% for(let i = 0; i < videoQualities.length-1; i++) { %>
+      <center>
+        <div class="containerAll">
+          <form action="/download" method="post" id="forms">
+            <li class="list" name="quality" value=<%= videoQualities[i].qualityLabel %>><span class="qualityLabel"><%= videoQualities[i].qualityLabel %></span> <input type="hidden" name="quality" value=<%=i%>>
+            
+              <button>
+                <ion-icon name="download-outline" class="icon"></ion-icon> Start Download
+                </button>
+         
+            </li>
+
+        </div>
+      </center>
+
+      </form>
+      <% } %>
+    </ul>
+  </div>
+
+
+  <script>
+    let btn = document.getElementById("playPause");
+    let audioUrl=document.getElementById("audioUrl").textContent;
+    let played=false;
+
+btn.addEventListener('click',()=>{
+    let audio = new Audio(audioUrl);
+    if(!played){
+    audio.play();
+    played=true;
+}
+else {
+    audio.pause();
+    played= false;
+}
+console.log(played);
+    
+   
+})
+
+
+  </script>
+
+
+</body>
+
+</html>

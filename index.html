@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+
+
+  <style>
+    body {
+      height: 100vh;
+      width: 100vw;
+      background-size: 100% 100%;
+      background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+      background-image: radial-gradient(49% 81% at 45% 47%, #302c1145 0%, #073AFF00 100%), radial-gradient(113% 91% at 31% -21%, #FF5A00FF 82%, #FF000000 99%), radial-gradient(142% 91% at 83% 7%, #FFDB00FF 1%, #FF000000 99%), radial-gradient(142% 91% at -6% 74%, #FF0049FF 1%, #FF000000 99%), radial-gradient(142% 91% at 111% 84%, #FF7000FF 0%, #FF0000FF 100%);
+      
+
+    }
+
+    .cont {
+      position: absolute;
+      width: 100vw;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-family: 'Righteous', cursive;
+    }
+
+
+    #searchBar {
+      border: none;
+      border-radius: 30px;
+      outline: none;
+      width: 70vw;
+      padding: 16px;
+      font-size: 18px;
+      border-radius: 8px 0 0 8px;
+      box-shadow: 1px 1px 3px black;
+    }
+
+    .get-button {
+      border: none;
+      outline: none;
+      background-color: #1d1c1c;
+      box-shadow: 1px 1px 3px black;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .get-button:hover {
+      background-color: #0d47a1;
+    }
+
+    #text {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      font-size: 56px;
+      font-family: 'Righteous', cursive;
+      text-shadow: 1px 1px 5px rgb(0, 0, 0);
+ 
+    }
+    #you{
+      color: red;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div class="cont">
+
+
+    <P id="text"> <span id="you">YOU</span> TUBE DOWNLOADER</P>
+    <form method="post">
+
+
+      <input type="text" name="url" placeholder="enter the url " id="searchBar">
+
+      <button type="submit" name="submit" class="get-button">GetDetails</button>
+    </form>
+  </div>
+
+
+</body>
+
+</html>
